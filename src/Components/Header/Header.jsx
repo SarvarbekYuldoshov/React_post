@@ -13,6 +13,12 @@ const Header = () => {
     useEffect(()=>{
         getCities()
     },[])
+    const showModal = () =>{
+        setOpen(true)
+    }
+    const closeModal = () =>{
+        setOpen(false)
+    }
     const columns = [
         { 
             title: 'Name',
@@ -41,14 +47,46 @@ const Header = () => {
             car:(<><Button type='primary' primary>Delete</Button> <Button type='primary' danger>Edit</Button></>)
         }
     ))
+    const handleSubmit = (values) => {
+        console.log(values,text);
+    }
   return (
     <div>
-        <Button type='primary'>Add</Button>
+        <Button type='primary' onClick={showModal}>Add</Button>
         <Table columns={columns} dataSource={data}/>
-        <Modal open={open}>
-            <Form>
+        <Modal open={open} footer={null} onCancel={closeModal}>
+            <Form
+            labelCol={{
+                span: 4,
+            }}
+            wrapperCol={{
+                span:18,
+            }}
+            style={{
+                maxWidth:900,
+            }}
+            onFinish={handleSubmit}
+            >
                 <Form.Item label="Name" name='name'>
                       <Input/>
+                </Form.Item>
+                <Form.Item label="Text" name='text'>
+                      <Input/>
+                </Form.Item>
+                <Form.Item label="Images" name='images'>
+                      <Input type='file'/>
+                </Form.Item>
+                <Form.Item
+                name="remember"
+                valuePropName="checked"
+                wrapperCol={{
+                offset: 8,
+                span: 16,
+                }}
+                 >
+                <Button type="primary" htmlType="submit">
+                Submit
+                </Button>
                 </Form.Item>
             </Form>
         </Modal>

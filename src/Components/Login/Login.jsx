@@ -27,8 +27,7 @@ const Login = () => {
                 navigate('/header')
             }
         })
-        .catch(err=>{
-            message.error("Xatolik")
+        .catch(err=>{message.error("Xatolik")
         })
     }
   return (
