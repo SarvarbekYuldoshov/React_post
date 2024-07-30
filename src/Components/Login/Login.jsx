@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import "./Login.css"
 import { Button, Form, Input, message } from 'antd'
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 
 const Login = () => {
@@ -47,6 +48,7 @@ const Login = () => {
       remember: true,
     }}
     autoComplete="off"
+    onFinish={Registr}
   >
     <Form.Item
       label="Username"
