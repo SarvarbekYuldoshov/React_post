@@ -5,6 +5,7 @@ import { Button, Form, Input, Modal, Table } from 'antd';
 const Header = () => {
     const [cities,setCities] = useState([]);
     const [open,setOpen] = useState(false)
+    const [image,setImage] = useState(null)
     const getCities  = ()=>{
         axios.get('https://autoapi.dezinfeksiyatashkent.uz/api/cities')
         .then(res=>setCities(res.data.data))
@@ -48,8 +49,23 @@ const Header = () => {
         }
     ))
     const handleSubmit = (values) => {
-        console.log(values,text);
+        const formData = new FormData();
+        formData.append('name', values.name);
+        formData.append('text', values.text);
+        formData.append('image',values.image);
     }
+    axios({
+        url:('https://autoapi.dezinfeksiyatashkent.uz/api/cities'),
+        method:"POST",
+        headers:{
+            Authorization:`Bearer ${localStorage.getItem('token')}`,
+        },
+        data:FormData,
+    })
+    .then(res=>{
+        console.log(res);
+    })
+    .catch(err=>console.log(err))
   return (
     <div>
         <Button type='primary' onClick={showModal}>Add</Button>
