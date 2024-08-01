@@ -106,7 +106,7 @@ const Header = () => {
     return (
         <div className='header'>
             <div className='container header-container'>
-                <Button type='primary' onClick={showModal}>Add</Button>
+                <Button className='header-btn' type='primary' onClick={showModal}>Add</Button>
                     <Table columns={columns} dataSource={data} />
                         <Modal open={open} footer={null} onCancel={closeModal}>
                             <Form
