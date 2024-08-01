@@ -104,34 +104,33 @@ const Header = () => {
     }));
 
     return (
-        <div>
-            <Button type='primary' onClick={showModal}>Add</Button>
-            <Table columns={columns} dataSource={data} />
-            <Modal open={open} footer={null} onCancel={closeModal}>
-                <Form
-                    form={form}
-                    labelCol={{ span: 4 }}
-                    wrapperCol={{ span: 18 }}
-                    style={{ maxWidth: 900 }}
-                    onFinish={handleSubmit}
-                >
-                    <Form.Item label="Name" name='name' rules={[{ required: true, message: 'Please input the name!' }]}>
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Text" name='text' rules={[{ required: true, message: 'Please input the text!' }]}>
-                        <Input />
-                    </Form.Item>
-                    <Form.Item label="Images" name='images' rules={[{ required: true, message: 'Please upload an image!' }]}>
-                        <Input type='file' onChange={(e) => setImage(e.target.files[0])} />
-                    </Form.Item>
-                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
-                        <Button type="primary" htmlType="submit">
-                            Submit
-                        </Button>
-                    </Form.Item>
-                </Form>
-            </Modal>
-        </div>
+        <div className='header'>
+            <div className='container header-container'>
+                <Button type='primary' onClick={showModal}>Add</Button>
+                    <Table columns={columns} dataSource={data} />
+                        <Modal open={open} footer={null} onCancel={closeModal}>
+                            <Form
+                                form={form}
+                                labelCol={{ span: 4 }}
+                                wrapperCol={{ span: 18 }}
+                                style={{ maxWidth: 900 }}
+                                onFinish={handleSubmit}>
+                                    <Form.Item label="Name" name='name' rules={[{ required: true, message: 'Please input the name!' }]}>
+                                        <Input />
+                                    </Form.Item>
+                                    <Form.Item label="Text" name='text' rules={[{ required: true, message: 'Please input the text!' }]}>
+                                        <Input />
+                                    </Form.Item>
+                                    <Form.Item label="Images" name='images' rules={[{ required: true, message: 'Please upload an image!' }]}>
+                                        <Input type='file' onChange={(e) => setImage(e.target.files[0])} />
+                                    </Form.Item>
+                                    <Form.Item wrapperCol={{ offset: 8, span: 16 }}>
+                                        <Button type="primary" htmlType="submit">Submit</Button>
+                                    </Form.Item>
+                            </Form>
+                       </Modal>
+                    </div>
+                </div>
     );
 }
 
